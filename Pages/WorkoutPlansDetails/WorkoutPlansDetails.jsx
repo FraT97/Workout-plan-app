@@ -5,6 +5,7 @@ import './WorkoutPlansDetails.css';
 
 function WorkoutPlansDetails() {
     const [workouts, setWorkouts] = useState([]);
+    const [filter, setFilter] = useState('all');
 
     useEffect(() => {
         axios.get('https://json-server-backend-p30d.onrender.com/workouts')
@@ -16,8 +17,9 @@ function WorkoutPlansDetails() {
             });
     }, []);
 
-const deleteWorkout = (id) => {
-        axios.delete(`https://json-server-backend-p30d.onrender.com/workouts/${id}`)            .then(() => {
+    const deleteWorkout = (id) => {
+        axios.delete(`https://json-server-backend-p30d.onrender.com/workouts/${id}`)
+            .then(() => {
                 setWorkouts(workouts.filter(workout => workout.id !== id));
             })
             .catch(error => {
@@ -39,11 +41,26 @@ const deleteWorkout = (id) => {
         }
     };
 
+    const handleFilterChange = (filter) => {
+        setFilter(filter);
+    };
+
+    const filteredWorkouts = filter === 'all' ? workouts : workouts.filter(workout => workout.name.toLowerCase() === filter);
+
     return (
         <div className="workouts-container">
-            {workouts.map(workout => (
+            <div className="filter-buttons">
+                <button onClick={() => handleFilterChange('all')}>All</button>
+                <button onClick={() => handleFilterChange('full-body')}>Full-Body</button>
+                <button onClick={() => handleFilterChange('cardio')}>Cardio</button>
+                <button onClick={() => handleFilterChange('legs')}>Legs</button>
+                <button onClick={() => handleFilterChange('back + biceps')}>Back + Biceps</button>
+                <button onClick={() => handleFilterChange('chest + triceps')}>Chest + Triceps</button>
+            </div>
+            {filteredWorkouts.map(workout => (
                 <div key={workout.id} className="workout-card">
                     <h2>{workout.name}</h2>
+                    {workout.image && <img src={workout.image} alt={workout.name} className="workout-image" />}
                     <ul>
                         {workout.exercises.map((exercise, index) => (
                             <li key={index}>
@@ -67,4 +84,3 @@ const deleteWorkout = (id) => {
 }
 
 export default WorkoutPlansDetails;
-
