@@ -1,70 +1,60 @@
 body {
-    background: url('../../src/assets/risen-wang-20jX9b35r_M-unsplash.jpg') no-repeat center center fixed; 
+    background: url('../../src/assets/risen-wang-20jX9b35r_M-unsplash.jpg') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
     padding: 0;
 }
-
 .workouts-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     padding: 20px;
     color: black;
 }
-
 .workout-card {
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #F9F9F9;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
 }
-
 .workout-card:hover {
     transform: scale(1.03);
 }
-
 .workout-card h2 {
     margin-bottom: 15px;
     color: #333;
 }
-
 .workout-card ul {
     list-style-type: none;
     padding: 0;
 }
-
 .workout-card li {
     margin: 5px 0;
 }
-
 .workout-card a {
     text-decoration: none;
     color: white;
-    background-color: #007bff;
+    background-color: #007BFF;
     padding: 8px 12px;
     border-radius: 4px;
     display: inline-block;
     font-weight: bold;
 }
-
 .workout-card a:hover {
-    background-color: #0056b3;
+    background-color: #0056B3;
 }
-
 .button-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 15px;
 }
-
 .delete-button {
     background-color: red;
     color: white;
@@ -74,14 +64,11 @@ body {
     border-radius: 4px;
     font-weight: bold;
 }
-
 .delete-button:hover {
     background-color: rgb(177, 15, 15);
 }
-
-
 .completed-button {
-    background-color: #28a745; 
+    background-color: #28A745;
     color: white;
     border: none;
     padding: 10px 16px;
@@ -89,7 +76,29 @@ body {
     border-radius: 4px;
     font-weight: bold;
 }
-
 .completed-button:hover {
     background-color: #218838;
+}
+.filter-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.filter-container label {
+    font-weight: bold;
+    color: #333;
+}
+.filter-container select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
 }

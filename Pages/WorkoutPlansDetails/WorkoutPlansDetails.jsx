@@ -45,7 +45,7 @@ function WorkoutPlansDetails() {
         setFilter(filter);
     };
 
-    const filteredWorkouts = filter === 'all' ? workouts : workouts.filter(workout => workout.name.toLowerCase() === filter);
+    const filteredWorkouts = filter === 'all' ? workouts : workouts.filter(workout => workout.name.toLowerCase().includes(filter));
 
     return (
         <div className="workouts-container">
